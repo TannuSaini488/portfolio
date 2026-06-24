@@ -26,7 +26,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+app.options(/.*/, cors(corsOptions));
 app.use(express.json());
 
 const MONGO_CONNECTION = process.env.MONGO_URI || process.env.MONGO_URL;
