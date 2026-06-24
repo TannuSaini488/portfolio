@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { API_BASE_URL } from '../config';
 
 function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -9,10 +10,10 @@ function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://portfolio-backend-fs29.onrender.com/api/contact', form);
-      alert('Message sent!');
-    } catch {
-      alert('Error sending message');
+      const response = await axios.post(`${API_BASE_URL}/api/contact`, form);
+      alert(response.data?.message || 'Message sent!');
+    } catch (error) {
+      alert(error.response?.data?.message || 'Error sending message');
     }
   };
 

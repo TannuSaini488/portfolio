@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import img from "../assets/image.jpeg";
 import zerodha from "../assets/zerodha.png";
 import inventory from "../assets/inventory.png";
 import restaurant from "../assets/restaurant.jpg";
@@ -36,18 +35,6 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex-1 flex justify-center"
-          >
-            <img
-              src={img}
-              alt="Developer Illustration"
-              className="rounded-4xl shadow-lg max-w-sm"
-            />
-          </motion.div>
         </div>
       </section>
       {/* Skills Section */}

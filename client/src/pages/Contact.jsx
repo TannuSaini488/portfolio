@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -10,11 +11,11 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://portfolio-backend-fs29.onrender.com/api/contact", form);
-      alert("Message sent!");
+      const response = await axios.post(`${API_BASE_URL}/api/contact`, form);
+      alert(response.data?.message || "Message sent!");
       setForm({ name: "", email: "", message: "" }); // clear form
-    } catch {
-      alert("Error sending message");
+    } catch (error) {
+      alert(error.response?.data?.message || "Error sending message");
     }
   };
 
@@ -75,7 +76,7 @@ export default function Contact() {
             <a href="https://github.com/TannuSaini488" className="link link-primary">
               GitHub
             </a>
-            <a href="tannu2005saini@gmail.com" className="link link-primary">
+            <a href="mailto:tannu2005saini@gmail.com" className="link link-primary">
               Email
             </a>
           </div>
