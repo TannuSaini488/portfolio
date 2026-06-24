@@ -1,4 +1,5 @@
 import React from "react";
+import asanAIQ from "../assets/asanAIQ.png";
 import zerodha from "../assets/zerodha.png";
 import expense from "../assets/expense.jpg";
 import inventory from "../assets/inventory.png";
@@ -10,6 +11,21 @@ export default function ProjectContainer() {
   return (
     <>
       <div className="bg-base-200 rounded-xl shadow p-5 hover:shadow-lg transition">
+        <img src={asanAIQ} alt={`Project`} className="rounded-lg" />
+        <h3 className="mt-4 font-bold text-lg">
+          AI-Powered Fitness & Wellness Platform
+        </h3>
+        <p className="text-base-content/70 mt-2">
+          An AI-powered fitness platform that helps users receive personalized 
+          yoga plans and health insights while connecting with trainers through real-time chat
+          and booking features. Built using React, Firestore, and AI APIs for a seamless user 
+          experience.
+        </p>
+        <a href="https://asana-iq.vercel.app/">
+          view demo
+        </a>
+      </div>
+      <div className="bg-base-200 rounded-xl shadow p-5 hover:shadow-lg transition">
         <img src={zerodha} alt={`Project`} className="rounded-lg" />
         <h3 className="mt-4 font-bold text-lg">
           Online Trading Platform - Zerodha Clone
@@ -20,22 +36,11 @@ export default function ProjectContainer() {
           tracking, built for learning or demonstration using modern web
           technologies.
         </p>
-        <a href="https://zerodha-clone-frontend-1890.onrender.com/">
+        <a href="https://trading-dashboard-rho-olive.vercel.app/">
           view demo
         </a>
       </div>
-      <div className="bg-base-200 rounded-xl shadow p-5 hover:shadow-lg transition">
-        <img src={inventory} alt={`Project`} className="rounded-lg" />
-        <h3 className="mt-4 font-bold text-lg">
-          Product & Stock Management System
-        </h3>
-        <p className="text-base-content/70 mt-2">
-          A software application that tracks and manages stock levels, orders,
-          and product details to ensure efficient inventory control and smooth
-          business operations.
-        </p>
-        <a href="https://inventory-frontend-xl36.onrender.com/">view demo</a>
-      </div>
+      
       <div className="bg-base-200 rounded-xl shadow p-5 hover:shadow-lg transition">
         <img src={restaurant} alt={`Project`} className="rounded-lg" />
         <h3 className="mt-4 font-bold text-lg">

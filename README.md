@@ -32,8 +32,7 @@ TO_EMAIL=your_receiving_email_address
 
 ```env
 VITE_API_BASE_URL=http://localhost:5000
-VITE_RESUME_IMAGE_URL=https://res.cloudinary.com/your-cloud-name/image/upload/v1234567890/resume.png
-VITE_RESUME_URL=https://res.cloudinary.com/your-cloud-name/raw/upload/v1234567890/resume.pdf
+VITE_RESUME_URL=https://drive.google.com/file/d/11-Zgb5l1-isSiRHPZSmHa4F4W2ArpRPn/view?usp=sharing
 ```
 
 4. Start the backend:
@@ -56,5 +55,5 @@ npm run dev
 - `TO_EMAIL` is the inbox that receives the contact messages.
 - If `SMTP_EMAIL` is empty, the server will fall back to `TO_EMAIL` as the Gmail sender account.
 - If you already have `MONGO_URL` in your `.env`, the server will use that too.
-- The resume page can preview an image from `VITE_RESUME_IMAGE_URL`, but the download button always uses `VITE_RESUME_URL`.
-- If you want the download to be a PDF, make sure `VITE_RESUME_URL` points to the direct Cloudinary PDF file URL.
+- The resume page now loads the Google Drive file through your backend, so the browser never talks to Drive directly.
+- Set `VITE_RESUME_URL` in `client/.env` to your Drive share link.

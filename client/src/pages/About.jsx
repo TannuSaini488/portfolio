@@ -5,14 +5,15 @@ export default function About() {
         <div className="container mx-auto px-4">
           <h1 className="text-3xl font-bold mb-4">About Me</h1>
           <p className="text-base-content/70 max-w-3xl">
-            I’m a MERN Stack Developer with a passion for creating clean, modern,
-            and efficient web applications. I love solving complex problems and
-            building user-friendly solutions that have a real impact.
+            Hi, I'm Tannu Saini. I build AI-powered applications and full-stack web products. Over the past few years, real-time systems,
+            and modern web technologies. I enjoy turning ideas into functional products and I've worked on projects involving prompt engineering,
+            workflow automation, learning new technologies through hands-on development.
           </p>
 
           <h2 className="text-2xl font-semibold mt-10">Skills & Tools</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-6">
             {[
+              "HTML & CSS",
               "React.js",
               "Node.js",
               "Express.js",
@@ -20,7 +21,15 @@ export default function About() {
               "Tailwind CSS",
               "JavaScript",
               "WebSockets",
-              "Git & GitHub"
+              "Git & GitHub",
+              "TypeScript",
+              "Firestore",
+              "Docker",
+              "CI/CD Pipelines",
+              "Figma",
+              "Google Cloud Platform",
+              "Vercel",
+              "Render",
             ].map((skill) => (
               <div
                 key={skill}

@@ -3,14 +3,22 @@ const normalizeBaseUrl = (value, fallback) => {
   return base.replace(/\/+$/, "");
 };
 
+const DEFAULT_RESUME_SHARE_URL =
+  "https://drive.google.com/file/d/11-Zgb5l1-isSiRHPZSmHa4F4W2ArpRPn/view?usp=sharing";
+
 export const API_BASE_URL = normalizeBaseUrl(
   import.meta.env.VITE_API_BASE_URL,
   "http://localhost:5000"
 );
 
-export const RESUME_IMAGE_URL = (
-  import.meta.env.VITE_RESUME_IMAGE_URL ||
-  "https://res.cloudinary.com/drgqsqxtx/image/upload/v1782288088/Screenshot_2026-06-24_133112_ta66ta.png"
+export const RESUME_SOURCE_URL = (
+  import.meta.env.VITE_RESUME_URL || DEFAULT_RESUME_SHARE_URL
 ).trim();
 
-export const RESUME_PDF_URL = (import.meta.env.VITE_RESUME_URL || "").trim();
+export const RESUME_PREVIEW_URL = `${API_BASE_URL}/api/resume?url=${encodeURIComponent(
+  RESUME_SOURCE_URL
+)}`;
+
+export const RESUME_DOWNLOAD_URL = `${API_BASE_URL}/api/resume/download?url=${encodeURIComponent(
+  RESUME_SOURCE_URL
+)}`;

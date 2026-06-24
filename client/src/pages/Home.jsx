@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import zerodha from "../assets/zerodha.png";
-import inventory from "../assets/inventory.png";
+import asanAIQ from "../assets/asanAIQ.png";
 import restaurant from "../assets/restaurant.jpg";
 
 export default function Home() {
@@ -22,8 +22,7 @@ export default function Home() {
               Hi, I’m <span className="text-primary">Tannu Saini</span>
             </h1>
             <p className="mt-4 text-lg text-base-content/70">
-              I’m a MERN Stack Developer passionate about building modern, fast,
-              and responsive web applications that deliver real value.
+              I’m a Full Stack Developer and AI Application Builder passionate about creating modern, scalable, and user-focused digital products. I enjoy combining web technologies with AI to build solutions that automate workflows, improve user experiences, and solve real-world problems.
             </p>
             <div className="mt-6 flex gap-4">
               <Link to="/projects" className="btn btn-primary">
@@ -46,18 +45,23 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mt-10">
             {[
-              "HTML",
-              "CSS",
-              "JavaScript",
+              "HTML & CSS",
               "React.js",
               "Node.js",
               "Express.js",
               "MongoDB",
               "Tailwind CSS",
+              "JavaScript",
               "WebSockets",
-              "C",
-              "C++",
-              "Java"
+              "Git & GitHub",
+              "TypeScript",
+              "Firestore",
+              "Docker",
+              "CI/CD Pipelines",
+              "Figma",
+              "Google Cloud Platform",
+              "Vercel",
+              "Render",
             ].map((skill) => (
               <div
                 key={skill}
@@ -81,17 +85,17 @@ export default function Home() {
               key="1"
               className="bg-base-100 rounded-xl shadow hover:shadow-lg transition p-5"
             >
-              <img src={zerodha} alt="project1" className="rounded-lg" />
+              <img src={asanAIQ} alt="project1" className="rounded-lg" />
               <h3 className="mt-4 font-bold text-lg">
-                Online Trading Platform - Zerodha Clone
+                AI-Powered Fitness & Wellness Platform
               </h3>
               <p className="text-base-content/70 mt-2">
-                A Zerodha Clone is a trading platform replica that simulates
-                Zerodha’s core features like live market data, order placement,
-                and portfolio tracking, built for learning or demonstration
-                using modern web technologies.
+               An AI-powered fitness platform that helps users receive personalized 
+               yoga plans and health insights while connecting with trainers through real-time chat
+               and booking features. Built using React, Firestore, and AI APIs for a seamless user 
+               experience.
               </p>
-              <a href="https://zerodha-clone-frontend-1890.onrender.com/">
+              <a href="https://asana-iq.vercel.app/">
                 view demo
               </a>
             </div>
@@ -99,16 +103,17 @@ export default function Home() {
               key="2"
               className="bg-base-100 rounded-xl shadow hover:shadow-lg transition p-5"
             >
-              <img src={inventory} alt="project2" className="rounded-lg" />
+              <img src={zerodha} alt="project2" className="rounded-lg" />
               <h3 className="mt-4 font-bold text-lg">
-                Product & Stock Management System
+                Online Trading Platform - Zerodha Clone
               </h3>
               <p className="text-base-content/70 mt-2">
-                A software application that tracks and manages stock levels,
-                orders, and product details to ensure efficient inventory
-                control and smooth business operations.
+                 A Zerodha Clone is a trading platform replica that simulates Zerodha’s
+                 core features like live market data, order placement, and portfolio
+                 tracking, built for learning or demonstration using modern web
+                 technologies.
               </p>
-              <a href="https://inventory-frontend-xl36.onrender.com/">
+              <a href="https://trading-dashboard-rho-olive.vercel.app/">
                 view demo
               </a>
             </div>

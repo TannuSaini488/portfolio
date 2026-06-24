@@ -1,97 +1,62 @@
-import React, { useState } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
-import { RESUME_IMAGE_URL, RESUME_PDF_URL } from "../config";
-
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+import { useState } from "react";
+import { Document, Page } from "react-pdf";
+import { RESUME_DOWNLOAD_URL, RESUME_PREVIEW_URL, RESUME_SOURCE_URL } from "../config";
+import "../pdf-worker";
 
 export default function Resume() {
+  const resumePreviewUrl = RESUME_PREVIEW_URL;
+  const resumeDownloadUrl = RESUME_DOWNLOAD_URL;
+  const hasResume = Boolean(RESUME_SOURCE_URL);
   const [numPages, setNumPages] = useState(0);
-  const resumePreviewSource = RESUME_IMAGE_URL || RESUME_PDF_URL;
-  const canDownloadPdf = Boolean(RESUME_PDF_URL);
-  const isPdfPreview = Boolean(RESUME_PDF_URL) && !RESUME_IMAGE_URL;
 
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
+  const onDocumentLoadSuccess = ({ numPages: pages }) => {
+    setNumPages(pages);
+  };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "calc(120vh - 120px)",
-        padding: "20px",
-        boxSizing: "border-box",
-      }}
-    >
-      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>My Resume</h1>
+    <div className="min-h-[calc(120vh-120px)] px-5 py-6 bg-base-200 text-base-content flex flex-col">
+      <h1 className="text-center text-3xl font-bold mb-5">My Resume</h1>
 
       {/* Resume Viewer */}
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          overflowY: "auto",
-          padding: "10px",
-        }}
-      >
-        {resumePreviewSource ? (
-          isPdfPreview ? (
+      <div className="flex flex-1 items-center justify-center overflow-y-auto py-2">
+        {hasResume ? (
+          <div className="card w-full max-w-5xl bg-base-100 shadow-xl border border-base-300">
+            <div className="card-body p-4 md:p-6">
             <Document
-              file={RESUME_PDF_URL}
+              file={resumePreviewUrl}
               onLoadSuccess={onDocumentLoadSuccess}
-              onLoadError={(error) => console.error("Error loading PDF:", error)}
+              onLoadError={(error) => console.error("Resume preview failed:", error)}
+              loading={<p className="m-0 text-center text-base-content/70">Loading resume...</p>}
+              error={<p className="m-0 text-center text-base-content/70">Resume preview could not be loaded.</p>}
             >
-              {numPages > 0 &&
-                Array.from(new Array(numPages), (_, index) => (
+              {Array.from({ length: numPages }, (_, index) => (
+                <div key={`page_${index + 1}`} className="flex justify-center">
                   <Page
-                    key={`page_${index + 1}`}
                     pageNumber={index + 1}
                     renderTextLayer={false}
                     renderAnnotationLayer={false}
-                    width={600}
+                    width={860}
                   />
-                ))}
+                </div>
+              ))}
             </Document>
-          ) : (
-            <img
-              src={RESUME_IMAGE_URL}
-              alt="Resume"
-              style={{
-                maxWidth: "100%",
-                width: "900px",
-                height: "auto",
-                borderRadius: "12px",
-                boxShadow: "0 12px 40px rgba(0, 0, 0, 0.15)",
-              }}
-            />
-          )
+            </div>
+          </div>
         ) : (
-          <p style={{ textAlign: "center" }}>
-            Add a Cloudinary image URL in <code>VITE_RESUME_IMAGE_URL</code> or a PDF URL in <code>VITE_RESUME_URL</code>.
+          <p className="text-center text-base-content/70">
+            Add a Google Drive resume URL in <code>VITE_RESUME_URL</code>.
           </p>
         )}
       </div>
 
       {/* Download Button */}
-      <div style={{ textAlign: "center", marginTop: "10px" }}>
+      <div className="mt-3 text-center">
         <a
-          href={RESUME_PDF_URL || "#"}
+          href={resumeDownloadUrl || "#"}
           download="My_Resume.pdf"
           target="_blank"
           rel="noreferrer"
-          style={{
-            padding: "10px 20px",
-            background: "#007bff",
-            color: "white",
-            borderRadius: "5px",
-            textDecoration: "none",
-            fontWeight: "bold",
-            pointerEvents: canDownloadPdf ? "auto" : "none",
-            opacity: canDownloadPdf ? 1 : 0.6,
-          }}
+          className={`btn btn-primary ${hasResume ? "" : "btn-disabled"}`}
         >
           Download Resume
         </a>
