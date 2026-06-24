@@ -23,6 +23,7 @@ npm install
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 # or MONGO_URL=your_mongodb_connection_string
+FRONTEND_URL=https://your-vercel-app.vercel.app
 SMTP_EMAIL=your_gmail_address
 SMTP_PASS=your_gmail_app_password
 TO_EMAIL=your_receiving_email_address
